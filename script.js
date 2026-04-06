@@ -1,32 +1,27 @@
 "use strict"
 
-function getTimeFromMinutes(min) {
-    let ost = min % 60,
-        cel = Math.floor(min / 60),
-        hoursStr = '';
-
-    if (typeof(min) !== 'number' || !Number.isInteger(min) || min < 0) {
-        return 'Введите количество минут';
-    } else if (min <= 59) {
-        return `Это ${ost} минут`
-    } else {
-        switch (cel) {
-            case 1:
-                hoursStr = 'час';
-                break;
-            case 2:
-                hoursStr = 'часа';
-                break;
-            case 3:
-                hoursStr = 'часа';
-                break;
-            case 4:
-                hoursStr = 'часа';
-                break;
-            default:
-                hoursStr = 'часов';
-           }
-        return `Это ${cel} ${hoursStr} ${ost} минут`
+function fib(int) {
+    if (int <= 0 || typeof(int) !== 'number' || !Number.isInteger(int)) {
+        return '';
     }
+
+    let first = 0;
+    let second = 1;
+    let result = '';
+
+    for (let i = 0; i < int; i++) {
+        if (i + 1 === int) {
+            result += `${first}`
+        } else {
+            result += `${first} `
+        }
+
+        let third = first + second;
+        first = second;
+        second = third;
+    }
+
+    return result;
 }
-console.log(getTimeFromMinutes());
+
+console.log(fib(6));
